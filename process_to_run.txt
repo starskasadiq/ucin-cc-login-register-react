@@ -1,0 +1,22 @@
+ssh to login to ec2
+
+install node
+
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
+
+. ~/.nvm/nvm.sh
+
+nvm install node
+
+node -e "console.log('Running Node.js ' + process.version)"
+
+npm install -g serve
+
+scp "build" package to the root directory of ec2
+scp -r -i ../cc-register-login-user.pem build ec2-user@ec2-52-14-240-217.us-east-2.compute.amazonaws.com:~
+
+serve -s build/ & 
+'&' here tells app should run in the background
+
+
+make sure the traffic is open for SG
